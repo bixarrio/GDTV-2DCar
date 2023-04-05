@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    [SerializeField] OtherCarController _carPrefab;
+    [SerializeField] OtherCarController[] _carPrefabs;
     [SerializeField] CarSpawnPoint[] _carSpawnPoints;
     [SerializeField] float _spawnInterval = 1f;
 
@@ -22,7 +22,9 @@ public class CarSpawner : MonoBehaviour
 
     private void SpawnRandomCar()
     {
+        // Pick a random car
+        var chosenCar = _carPrefabs[Random.Range(0, _carPrefabs.Length)];
         // Pick a random spawner and ask it to spawn a car
-        _carSpawnPoints[Random.Range(0, _carSpawnPoints.Length)].SpawnCar(transform, _carPrefab);
+        _carSpawnPoints[Random.Range(0, _carSpawnPoints.Length)].SpawnCar(transform, chosenCar);
     }
 }
