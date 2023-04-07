@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static event Action PlayerCrashed;
+    public static event Action PlayerRecovered;
+
     [SerializeField] float _moveSpeed = 10f;
     [Header("Crash")]
     [SerializeField] float _crashTime = 1f;
@@ -33,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator CrashRoutine()
     {
+        PlayerCrashed?.Invoke();
+
         // Disable control
         _isActive = false;
 
@@ -49,5 +55,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.zero);
         // Enable control
         _isActive = true;
+
+        PlayerRecovered?.Invoke();
     }
 }

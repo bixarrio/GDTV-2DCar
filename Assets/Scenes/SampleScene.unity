@@ -676,7 +676,7 @@ MonoBehaviour:
   _roadWidth: 2
   _roadPrefab: {fileID: 5454254436222345090, guid: fde35494682341d4495d73c2b47895ff, type: 3}
   _acceleration: 0.005
-  _maxSpeed: 0.02
+  _maxSpeed: 0.05
 --- !u!114 &1926113435
 MonoBehaviour:
   m_ObjectHideFlags: 0
